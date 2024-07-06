@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -13,7 +14,9 @@ class CustomDrawer extends StatelessWidget {
             height: 15,
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              context.go('/');
+            },
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
@@ -27,7 +30,9 @@ class CustomDrawer extends StatelessWidget {
             height: 15,
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              context.go('/movies');
+            },
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(

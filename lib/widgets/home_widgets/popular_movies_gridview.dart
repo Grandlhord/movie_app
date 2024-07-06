@@ -76,6 +76,10 @@ class _MoviesGridViewState extends State<MoviesGridView> {
                             SizedBox(
                               height: 4,
                             ),
+                            Text('Votes: ${movie.voteCount}'),
+                            SizedBox(
+                              height: 4,
+                            ),
                             Row(
                               children: [
                                 Icon(
@@ -91,6 +95,13 @@ class _MoviesGridViewState extends State<MoviesGridView> {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ],
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            Text('Release Date: ${movie.releaseDate}'),
+                            SizedBox(
+                              height: 4,
                             ),
                             SizedBox(
                               height: 4,

@@ -2,6 +2,7 @@ import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/movies.dart';
 
 import 'home.dart';
 
@@ -16,6 +17,10 @@ class MyApp extends StatelessWidget {
       path: '/',
       builder: (context,state) => const HomePage(),
     ),
+    GoRoute(
+      path: '/movies',
+      builder: (context,state) => const MoviesPage(),
+    ),
   ]);
 
   MyApp({super.key});
@@ -23,6 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: 'TMDB Movie App',
       theme: ThemeData.dark(),
       routerConfig: _router,
