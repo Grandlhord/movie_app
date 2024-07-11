@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomNavBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomNavBar({super.key});
@@ -32,6 +33,9 @@ class CustomNavBar extends StatelessWidget implements PreferredSizeWidget {
                 borderRadius: BorderRadius.circular(6),
               ),
               child: TextField(
+                onChanged: (query) {
+                  context.go('/search/');
+                },
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.grey,

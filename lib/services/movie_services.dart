@@ -12,8 +12,9 @@ class MovieServices {
   };
 
   Future<List<Movie>> fetchTopRatedMovies() async {
-    final response =
-        await http.get(Uri.parse('${BASE_URL}top_rated?language=en-US&page=1'),headers:headers);
+    final response = await http.get(
+        Uri.parse('${BASE_URL}top_rated?language=en-US&page=1'),
+        headers: headers);
 
     if (response.statusCode == 200) {
       return ((json.decode(response.body)['results']) as List)
@@ -25,8 +26,9 @@ class MovieServices {
   }
 
   Future<List<Movie>> fetchUpcomingMovies() async {
-    final response =
-    await http.get(Uri.parse('${BASE_URL}upcoming?language=en-US&page=1'),headers:headers);
+    final response = await http.get(
+        Uri.parse('${BASE_URL}upcoming?language=en-US&page=1'),
+        headers: headers);
 
     if (response.statusCode == 200) {
       return ((json.decode(response.body)['results']) as List)
@@ -38,8 +40,9 @@ class MovieServices {
   }
 
   Future<List<Movie>> fetchNowPlayingMovies() async {
-    final response =
-    await http.get(Uri.parse('${BASE_URL}now_playing?language=en-US&page=1'),headers:headers);
+    final response = await http.get(
+        Uri.parse('${BASE_URL}now_playing?language=en-US&page=1'),
+        headers: headers);
     if (response.statusCode == 200) {
       return ((json.decode(response.body)['results']) as List)
           .map((e) => Movie.fromJson(e))
@@ -50,9 +53,24 @@ class MovieServices {
   }
 
   Future<List<Movie>> fetchPopularMovies() async {
-    final response =
-    await http.get(Uri.parse('${BASE_URL}popular?language=en-US&page=1'), headers:headers);
+    final response = await http.get(
+        Uri.parse('${BASE_URL}popular?language=en-US&page=1'),
+        headers: headers);
 
+    if (response.statusCode == 200) {
+      return ((json.decode(response.body)['results']) as List)
+          .map((e) => Movie.fromJson(e))
+          .toList();
+    } else {
+      throw Exception('Failed to load movies');
+    }
+  }
+
+  Future<List<Movie>> searchMovies(String query) async {
+    final response = await http.get(
+        Uri.parse(
+            'https://api.themoviedb.org/3/search/movie?${query}include_adult=false&language=en-US&page=1'),
+        headers: headers);
     if (response.statusCode == 200) {
       return ((json.decode(response.body)['results']) as List)
           .map((e) => Movie.fromJson(e))
